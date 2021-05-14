@@ -1,0 +1,655 @@
+/* /* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+  box-sizing: border-box;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/PlayfairDisplay-Regular.woff2') format('woff2'),
+    url('../fonts/PlayfairDisplay-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/PlayfairDisplay-ExtraBold.woff2') format('woff2'),
+    url('../fonts/PlayfairDisplay-ExtraBold.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/PlayfairDisplay-Italic.woff2') format('woff2'),
+    url('../fonts/PlayfairDisplay-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/PlayfairDisplay-BoldItalic.woff2') format('woff2'),
+    url('../fonts/PlayfairDisplay-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/PlayfairDisplay-Medium.woff2') format('woff2'),
+    url('../fonts/PlayfairDisplay-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/PlayfairDisplay-Bold.woff2') format('woff2'),
+    url('../fonts/PlayfairDisplay-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/PlayfairDisplay-SemiBold.woff2') format('woff2'),
+    url('../fonts/PlayfairDisplay-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/PlayfairDisplay-BlackItalic.woff2') format('woff2'),
+    url('../fonts/PlayfairDisplay-BlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/PlayfairDisplay-Black.woff2') format('woff2'),
+    url('../fonts/PlayfairDisplay-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/PlayfairDisplay-ExtraBoldItalic.woff2') format('woff2'),
+    url('../fonts/PlayfairDisplay-ExtraBoldItalic.woff') format('woff');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/PlayfairDisplay-SemiBoldItalic.woff2') format('woff2'),
+    url('../fonts/PlayfairDisplay-SemiBoldItalic.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../fonts/PlayfairDisplay-MediumItalic.woff2') format('woff2'),
+    url('../fonts/PlayfairDisplay-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-MediumItalic.woff2') format('woff2'),
+    url('../fonts/Roboto-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Julius Sans One';
+  src: url('../fonts/JuliusSansOne-Regular.woff2') format('woff2'),
+    url('../fonts/JuliusSansOne-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Thin.woff2') format('woff2'),
+    url('../fonts/Roboto-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-BoldItalic.woff2') format('woff2'),
+    url('../fonts/Roboto-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Medium.woff2') format('woff2'),
+    url('../fonts/Roboto-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Black.woff2') format('woff2'),
+    url('../fonts/Roboto-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-LightItalic.woff2') format('woff2'),
+    url('../fonts/Roboto-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-BlackItalic.woff2') format('woff2'),
+    url('../fonts/Roboto-BlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Light.woff2') format('woff2'),
+    url('../fonts/Roboto-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Bold.woff2') format('woff2'),
+    url('../fonts/Roboto-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Italic.woff2') format('woff2'),
+    url('../fonts/Roboto-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Regular.woff2') format('woff2'),
+    url('../fonts/Roboto-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-ThinItalic.woff2') format('woff2'),
+    url('../fonts/Roboto-ThinItalic.woff') format('woff');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Playfair Display';
+  font-weight: normal;
+  font-size: 22px;
+  color: #2b2b2b;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1284px;
+  margin: 0 auto;
+}
+
+.header-top {
+  background-color: black;
+  background: url('../images/banners/banner.png') no-repeat center center;
+  background-size: cover;
+  max-height: 500px;
+  min-height: 350px;
+  margin-top: 10px;
+}
+
+.header-social-and-contact {
+  float: left;
+  margin-top: 13px;
+  margin-left: 15%;
+  font-size: 15px;
+}
+.header-social-and-contact section {
+  display: inline-block;
+}
+.header-social li {
+  display: inline-block;
+  padding: 0 5px;
+}
+.header-social li:last-child {
+  padding-right: 30px;
+}
+
+.header-social-and-contact a {
+  color: white;
+}
+
+.header-social-and-contact .icon {
+  color: white;
+}
+
+.header-search {
+  margin-top: 10px;
+}
+.header-controls-and-search {
+  margin-right: 15%;
+  float: right;
+  font-size: 15px;
+}
+.header-controls-and-search section {
+  display: inline-block;
+  flex-direction: row-reverse;
+}
+.header-controls-and-search li {
+  display: inline-block;
+  padding: 0 5px;
+}
+
+.header-controls-and-search li i {
+  color: #2b2b2b;
+}
+
+.header-search a {
+  color: #2b2b2b;
+}
+
+.header-search {
+  position: relative;
+}
+.header-search a i {
+  position: absolute;
+  color: #2b2b2b;
+  bottom: 3px;
+  right: 155px;
+}
+
+/* Simt ca am gresit aici ^ ar fi trebuit
+oare pusa iconita direct in placeholder? */
+.header-bottom {
+  background-color: #2b2b2b;
+
+  min-height: 40px;
+}
+
+.nav-primary {
+  padding-top: 5px;
+}
+.header-bottom ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-bottom li a {
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Playfair Display';
+  font-weight: normal;
+}
+
+.content h1 {
+  font-size: 35px;
+  font-weight: 800;
+  margin-bottom: 5px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.content .catalog-tiles {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-catalog-preview {
+  border-top: 1px solid #cccccc;
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+.product-tile {
+  max-width: 313px;
+}
+
+.product-tile img {
+  max-width: 313px;
+}
+
+/* aliniere "lookbook" din header-bottom cu
+ultima img din catalog tiles. --> nu sunt convinsa ca e solutia potrivita.
+Initial am vrut sa adaug o margine pe fiecare article, fara sa redimensionez
+imaginea. Imi strica alinierea si nu am reusit sa o remediez, asa ca am apelat
+ la solutia asta.
+  */
+
+.content .product-tile .product-image-container {
+  position: relative;
+}
+
+.product-tile {
+  text-align: center;
+}
+
+.product-tile a {
+  text-align: center;
+  font-size: 22px;
+  color: #2b2b2b;
+}
+
+.product-image-container a {
+  display: block;
+  max-height: 300px;
+}
+
+.product-tile-controls {
+  position: relative;
+}
+.product-tile-controls a i {
+  position: absolute;
+  color: #2b2b2b;
+  top: -270px;
+  right: 15px;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.product-tile-controls a i:hover {
+  color: #740878;
+}
+
+/* nu am vazut deloc hover in design. sterg daca nu e in regula :D
+daca erau si mi-au scapat mie, again, remediez
+*/
+.home-about-us main {
+  text-align: justify;
+  text-justify: inter-word;
+  margin-top: 50px;
+  margin-bottom: 70px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.home-about-us main h1 {
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 45px;
+  margin-bottom: 40px;
+}
+.home-about-us p {
+  font-size: 22px;
+  margin-left: 50px;
+  margin-bottom: 30px;
+  padding-left: 100px;
+}
+
+aside img {
+  float: left;
+  margin-right: 120px;
+  margin-bottom: 20px;
+  max-height: 550px;
+}
+
+.home-catalog-preview footer {
+  text-align: center;
+  margin: 65px auto;
+}
+.catalog-cta {
+  border: 1px solid #2b2b2b;
+  padding: 5px 15px;
+  margin: 0 auto;
+  font-family: 'Roboto';
+  font-weight: normal;
+  color: #2b2b2b;
+}
+
+.catalog-cta:hover {
+  color: #740878;
+  border: 1px solid #740878;
+}
+
+.footer {
+  background-color: #e8e8e8;
+}
+.footer-container {
+  width: 100%;
+  max-width: 1284px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 0;
+}
+
+.footer section {
+  font-size: 20px;
+  text-transform: lowercase;
+  text-align: left;
+  letter-spacing: 0.33px;
+  color: #2b2b2b;
+}
+
+.footer section a {
+  color: #2b2b2b;
+}
+
+.footer-social li {
+  display: inline-block;
+}
+
+.footer-sign-up-newsletter form {
+  display: flex;
+  flex-direction: column;
+}
+.footer-sign-up-newsletter form label {
+  margin-bottom: 10px;
+}
+
+.footer-sign-up-newsletter form input {
+  margin: 2.5px 0;
+  border-color: white;
+}
+.footer-sign-up-newsletter button {
+  margin: 10px 5px;
+  padding: 5px 0;
+  font-family: 'Roboto';
+  font-weight: normal;
+}
+
+.footer-sign-up-newsletter button {
+  max-width: 100px;
+  margin-left: 0;
+}
+
+.footer-nav-style nav li {
+  margin-bottom: 15px;
+}
+
+.footer-nav-about-us nav li {
+  margin-bottom: 15px;
+}
+
+.footer-contact li {
+  margin-bottom: 15px;
+}
+.footer-container li a:hover {
+  color: #740878;
+}
+/* footer-ul nu e aliniat ca in design.
+Il voi schimba daca trebuie, dar m-am distrat putin aranjanu-le */
