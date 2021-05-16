@@ -427,6 +427,10 @@ a {
   color: #2b2b2b;
 }
 
+.header-controls a {
+  color: #2b2b2b;
+}
+
 .header-search a {
   color: #2b2b2b;
 }
@@ -514,21 +518,27 @@ imaginea. Imi strica alinierea si nu am reusit sa o remediez, asa ca am apelat
   color: #2b2b2b;
 }
 
+.product-image-container {
+  position: relative;
+}
+
 .product-image-container a {
   display: block;
   max-height: 300px;
 }
 
 .product-tile-controls {
-  position: relative;
-}
-.product-tile-controls a i {
   position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+}
+
+.product-tile-controls a {
   color: #2b2b2b;
-  top: -270px;
-  right: 15px;
   font-size: 25px;
-  font-weight: 500;
+  display: inline-block;
+  margin-left: 16px;
 }
 
 .product-tile-controls a i:hover {
