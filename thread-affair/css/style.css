@@ -680,6 +680,10 @@ a {
   background-size: 65px;
 }
 
+.home-newsletter .message {
+  text-align: center;
+}
+
 .footer-top {
   min-height: 322px;
   background: url('../images/banners/banner-06.jpg') no-repeat center right

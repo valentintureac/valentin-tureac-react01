@@ -1,6 +1,6 @@
 {
   "window.zoomLevel": 5,
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "trailing",
   "files.trimTrailingWhitespace": true,
   "editor.tabSize": 2,
   "liveServer.settings.donotShowInfoMsg": true,
