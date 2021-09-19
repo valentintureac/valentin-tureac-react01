@@ -647,6 +647,20 @@ aside img {
   margin-left: 0;
 }
 
+.footer-sign-up-newsletter button .icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .footer-nav-style nav li {
   margin-bottom: 15px;
 }

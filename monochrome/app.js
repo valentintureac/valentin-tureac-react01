@@ -1,8 +1,8 @@
 class NewsletterForm extends React.Component {
-  // v1, no constructor
   state = {
     email: '',
     inputMessage: '',
+    submitted: false,
     busy: false,
     submitted: false,
     submittedValue: '',
@@ -22,7 +22,6 @@ class NewsletterForm extends React.Component {
       this.setState({
         inputMessage: 'Please use a valid email',
       });
-
       return;
     }
 
@@ -53,36 +52,33 @@ class NewsletterForm extends React.Component {
       <div>
         {this.state.submitted === true ? (
           <div className="container text-center">
-            Hello, {this.state.submittedValue}! Thank you for subscribing!
+            Hello, {this.state.submittedValue}!<br></br> Thank you for
+            subscribing!
           </div>
         ) : (
-          <form onSubmit={this.onSubmit} className="form-newsletter container">
-            <label htmlFor="field-newsletter">
-              Subscribe to our <span>newsletter</span>
-            </label>
-            <div>
-              <input
-                type="text"
-                name="field-newsletter"
-                id="field-newsletter"
-                value={this.state.email}
-                onChange={this.onInputChange}
-                placeholder="enter your email address to receive the latest news!"
-              ></input>
-              {this.state.inputMessage.length > 0 ? (
-                <div className="message">{this.state.inputMessage}</div>
-              ) : null}
-            </div>
+          <form onSubmit={this.onSubmit}>
+            <label htmlFor="email-newsletter">Sign up for our newsletter</label>
+            <input
+              type="text"
+              name="email"
+              id="email-newsletter"
+              value={this.state.email}
+              onChange={this.onInputChange}
+              placeholder="enter your email address to recieve updates"
+            ></input>
+            {this.state.inputMessage.length > 0 ? (
+              <div className="error-message">{this.state.inputMessage}</div>
+            ) : null}
             <button
               type="submit"
-              title="Subscribe"
+              title="submit"
               disabled={this.state.busy}
               className={`${this.state.busy === true ? 'busy' : ''}`}
             >
               {this.state.busy ? (
                 <i className="fas fa-spinner icon"></i>
               ) : (
-                'Subscribe'
+                'Submit'
               )}
             </button>
           </form>
@@ -92,21 +88,20 @@ class NewsletterForm extends React.Component {
   }
 }
 
-const newsletterContainer = document.querySelector('.home-newsletter');
+const newsletterContainer = document.querySelector(
+  '.footer-sign-up-newsletter',
+);
+
 ReactDOM.render(<NewsletterForm></NewsletterForm>, newsletterContainer);
 
 class AddToCartButton extends React.Component {
-  // v1
   state = {
     added: false,
     busy: false,
   };
 
-  onClick = () => {
-    // this.setState({
-    //   added: !this.state.added,
-    // });
-
+  onClick = (event) => {
+    event.preventDefault();
     if (this.state.busy === true) {
       return;
     }
@@ -116,54 +111,41 @@ class AddToCartButton extends React.Component {
     });
 
     setTimeout(() => {
-      dispatchEvent(
-        new CustomEvent('cart:add', {
-          detail: this.props.productId,
-        }),
-      );
-
       this.setState({
         busy: false,
         added: !this.state.added,
       });
-    }, 1000);
+    }, 250);
   };
 
   render() {
     return (
-      <button
-        className={`product-control ${
-          this.state.added === true ? 'active' : ''
-        } ${this.state.busy === true ? 'busy' : ''}`}
-        type="button"
+      <a
+        href=""
         onClick={this.onClick}
         title={this.state.added === true ? 'Remove from Cart' : 'Add to Cart'}
       >
-        <span>
-          {this.state.added === true
-            ? `PID: ${this.props.productId} in cart`
-            : `Add to Cart`}
-        </span>
-        <i className="fas fa-spinner icon"></i>
-      </button>
+        {this.state.added === true ? (
+          <i className="fas fa-plus-square"></i>
+        ) : (
+          <i className="far fa-plus-square"></i>
+        )}
+      </a>
     );
   }
 }
 
 class AddtoWishlistButton extends React.Component {
-  // v2, constructor
-  constructor(props) {
-    super(props);
+  state = {
+    added: false,
+    busy: true,
+  };
 
-    this.state = {
-      added: false,
-      busy: true,
-    };
-  }
+  onClick = (event) => {
+    event.preventDefault();
 
-  onClick = () => {
     this.setState({
-      busy: true,
+      busy: false,
     });
 
     setTimeout(() => {
@@ -171,31 +153,24 @@ class AddtoWishlistButton extends React.Component {
         busy: false,
         added: !this.state.added,
       });
-    }, 1000);
+    }, 250);
   };
 
   render() {
-    var { added, busy } = this.state;
-    var className =
-      'product-control' +
-      ' ' +
-      (added ? 'active' : '') +
-      ' ' +
-      (busy ? 'busy' : '');
-
     return (
-      <button
-        className={className}
-        type="button"
+      <a
+        href=""
         onClick={this.onClick}
-        title={added === true ? 'Remove from Wishlist' : 'Add to Wishlist'}
-        disabled={busy}
+        title={
+          this.state.added === true ? 'Remove from Wishlist' : 'Add to Wishlist'
+        }
       >
-        <span>
-          <i className={added === true ? 'fas fa-heart' : 'far fa-heart'}></i>
-        </span>
-        <i className="fas fa-spinner icon"></i>
-      </button>
+        {this.state.added === true ? (
+          <i className="fas fa-heart"></i>
+        ) : (
+          <i className="far fa-heart"></i>
+        )}
+      </a>
     );
   }
 }
@@ -205,11 +180,8 @@ class ProductControls extends React.Component {
     const productId = this.props.productId;
 
     return [
-      <AddToCartButton key="123" productId={productId}></AddToCartButton>,
-      <AddtoWishlistButton
-        key="124"
-        productId={productId}
-      ></AddtoWishlistButton>,
+      <AddToCartButton key="1" productId={productId}></AddToCartButton>,
+      <AddtoWishlistButton key="2" productId={productId}></AddtoWishlistButton>,
     ];
   }
 }
