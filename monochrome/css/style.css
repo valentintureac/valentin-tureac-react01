@@ -541,6 +541,19 @@ imaginea. Imi strica alinierea si nu am reusit sa o remediez, asa ca am apelat
   margin-left: 16px;
 }
 
+.product-tile-controls a .icon {
+  display: none;
+  animation: spin 1s linear infinite;
+}
+
+.product-tile-controls a.busy .icon {
+  display: block;
+}
+
+.product-tile-controls a.busy i {
+  display: none;
+}
+
 .product-tile-controls a i:hover {
   color: #740878;
 }

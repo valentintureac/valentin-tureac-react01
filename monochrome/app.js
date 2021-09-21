@@ -29,8 +29,6 @@ class NewsletterForm extends React.Component {
       busy: true,
     });
 
-    console.log('submitted ' + this.state.email);
-
     setTimeout(() => {
       this.setState({
         busy: false,
@@ -52,8 +50,7 @@ class NewsletterForm extends React.Component {
       <div>
         {this.state.submitted === true ? (
           <div className="container text-center">
-            Hello, {this.state.submittedValue}!<br></br> Thank you for
-            subscribing!
+            Hello, {this.state.submittedValue}!<br /> Thank you for subscribing!
           </div>
         ) : (
           <form onSubmit={this.onSubmit}>
@@ -124,12 +121,16 @@ class AddToCartButton extends React.Component {
         href=""
         onClick={this.onClick}
         title={this.state.added === true ? 'Remove from Cart' : 'Add to Cart'}
+        className={`${this.state.added === true ? 'active' : ''} ${
+          this.state.busy === true ? 'busy' : ''
+        }`}
       >
         {this.state.added === true ? (
           <i className="fas fa-plus-square"></i>
         ) : (
           <i className="far fa-plus-square"></i>
         )}
+        <i className="fas fa-spinner icon"></i>
       </a>
     );
   }
@@ -138,14 +139,14 @@ class AddToCartButton extends React.Component {
 class AddtoWishlistButton extends React.Component {
   state = {
     added: false,
-    busy: true,
+    busy: false,
   };
 
   onClick = (event) => {
     event.preventDefault();
 
     this.setState({
-      busy: false,
+      busy: true,
     });
 
     setTimeout(() => {
@@ -164,12 +165,16 @@ class AddtoWishlistButton extends React.Component {
         title={
           this.state.added === true ? 'Remove from Wishlist' : 'Add to Wishlist'
         }
+        className={`${this.state.added === true ? 'active' : ''} ${
+          this.state.busy === true ? 'busy' : ''
+        }`}
       >
         {this.state.added === true ? (
           <i className="fas fa-heart"></i>
         ) : (
           <i className="far fa-heart"></i>
         )}
+        <i className="fas fa-spinner icon"></i>
       </a>
     );
   }
