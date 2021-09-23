@@ -315,16 +315,21 @@ a {
   margin-right: 10px;
 }
 
-.header-cart {
-  position: relative;
-  margin-top: 6px;
+.header-counters {
+  display: flex;
 }
 
-.header-cart .icon {
+.header-counter {
+  position: relative;
+  margin-top: 6px;
+  padding: 0 8px;
+}
+
+.header-counter .icon {
   font-size: 30px;
 }
 
-.header-cart .cart-qty {
+.header-counter .qty {
   position: absolute;
   top: -6px;
   right: -5px;
