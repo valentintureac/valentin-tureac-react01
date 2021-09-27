@@ -378,7 +378,7 @@ a {
   background-size: cover;
   max-height: 500px;
   min-height: 350px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 .header-social-and-contact {
@@ -429,6 +429,10 @@ a {
 
 .header-controls a {
   color: #2b2b2b;
+}
+
+.header-controls a .icon {
+  margin-left: 2px;
 }
 
 .header-search a {
