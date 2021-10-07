@@ -1,12 +1,14 @@
 import { Component, Fragment } from 'react';
+import Films from './components/Films';
 import Search from './components/Search';
 
-const baseUrl = 'https://swapi.dev/api/filmss';
+const baseUrl = 'https://swapi.dev/api/films';
 
 class App extends Component {
   state = {
     busy: false,
     films: [],
+    errorMessage: '',
   };
 
   getFilms() {
@@ -17,7 +19,7 @@ class App extends Component {
     // promise chaining
     fetch(baseUrl)
       .then((response) => {
-        if (response.status) {
+        if (response.status === 404) {
           throw new Error('404');
         }
 
@@ -30,7 +32,6 @@ class App extends Component {
         });
       })
       .catch((_) => {
-        console.log(_);
         this.setState({
           errorMessage: 'An error has occured.',
           busy: false,
@@ -39,9 +40,16 @@ class App extends Component {
   }
 
   renderFilms() {
-    return this.state.films.map((film) => {
-      return <p key={film.episode_id}>{film.title}</p>;
-    });
+    // return this.state.films.map((film) => {
+    //   return <p key={film.episode_id}>{film.title}</p>;
+    // });
+
+    return (
+      <>
+        <h2>Available Films</h2>
+        <Films films={this.state.films}></Films>
+      </>
+    );
   }
 
   renderMainScreen() {
@@ -49,7 +57,7 @@ class App extends Component {
       return <>... loading</>;
     }
 
-    if (this.state.busy === false && this.state.errorMessage) {
+    if (this.state.busy === false && this.state.errorMessage.length > 0) {
       return <>{this.state.errorMessage}</>;
     }
 
@@ -67,7 +75,13 @@ class App extends Component {
           <nav className="container d-flex justify-content-between align-items-center">
             <h1 className="display-6 text-warning">Swapi Cinema</h1>
 
-            <Search></Search>
+            <Search
+              onSearchResults={(films) => {
+                this.setState({
+                  films,
+                });
+              }}
+            ></Search>
           </nav>
         </header>
         <main className="container mt-5 pt-5">{this.renderMainScreen()}</main>
