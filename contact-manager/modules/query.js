@@ -1,6 +1,7 @@
 import { contacts } from './data.js';
 
 export const findContact = (needle = 'query') => {
+  needle = needle.toLocaleLowerCase();
   return contacts.filter((contact) => {
     const values = Object.values(contact);
     //values [1, larry, larryson, ;]
