@@ -42,7 +42,7 @@ class Search extends Component {
           className="form-control me-2 align-self-center"
           type="text"
           name="q"
-          placeholder="Search film..."
+          placeholder={this.props.placeholder || 'Search...'}
           onChange={this.onInputChange}
           value={this.state.searchTerm}
           disabled={this.state.busy}

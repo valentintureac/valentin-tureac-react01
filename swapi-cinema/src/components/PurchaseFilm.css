@@ -1,0 +1,22 @@
+.cinema {
+  background-color: var(--bs-light);
+  border: 1px solid var(--bs-dark);
+  border-radius: 1.25rem;
+  padding: 0.25rem 0 0.75rem 0;
+}
+
+.cinema__screen {
+  width: 80%;
+  height: 10px;
+  background-color: var(--bs-dark);
+  margin: 0 auto 1.25rem auto;
+}
+
+.cinema__seats {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  row-gap: 2px;
+  column-gap: 2px;
+}
