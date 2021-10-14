@@ -11,7 +11,7 @@ export const MetaImage = ({ term }) => {
 
   useEffect(() => {
     const refinedSearchTerm = encodeURIComponent(`star wards ${term}`);
-    const random = Math.floor(Math.random() * 7500) + 1;
+    const random = Math.floor(Math.random() * 2000) + 1;
 
     setTimeout(() => {
       fetch(
