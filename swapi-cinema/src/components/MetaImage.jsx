@@ -41,7 +41,7 @@ export const MetaImage = ({ term }) => {
       {busy === true ? (
         'loading'
       ) : (
-        <img className="img-fluid" src={imageUrl}></img>
+        <img className="img-fluid" src={imageUrl} alt={term}></img>
       )}
     </>
   );
