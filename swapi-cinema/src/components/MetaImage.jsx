@@ -34,7 +34,7 @@ export const MetaImage = ({ term }) => {
           setBusy(false);
         });
     }, random);
-  }, []);
+  }, [term]);
 
   return (
     <>
