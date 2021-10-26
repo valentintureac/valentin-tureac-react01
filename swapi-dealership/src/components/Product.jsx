@@ -36,6 +36,13 @@ export const Product = () => {
     });
   };
 
+  const removeFromCart = () => {
+    dispatch({
+      type: 'removeFromCart',
+      payload: product,
+    });
+  };
+
   return (
     <section className="row">
       <div className="col-12 mb-4 d-flex justify-content-between">
@@ -72,7 +79,9 @@ export const Product = () => {
           className="btn btn-warning btn-xl flex-grow-1"
           title={`Add ${product.name} to cart`}
           type="button"
-          onClick={addToCart}
+          onClick={() => {
+            productInCart ? removeFromCart() : addToCart();
+          }}
         >
           {productInCart
             ? 'Remove from cart'

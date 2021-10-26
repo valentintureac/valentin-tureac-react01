@@ -20,7 +20,7 @@ const App = () => {
         <nav className="container d-flex justify-content-between align-items-center">
           <h1 className="display-6 text-warning">Swapi Vehicles</h1>
 
-          <Search></Search>
+          <Search className="d-flex"></Search>
         </nav>
       </header>
 
