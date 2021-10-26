@@ -3,6 +3,7 @@ import Product from './Product';
 import SearchResults from './SearchResults';
 import Cart from './Cart';
 import Checkout from './Checkout';
+import OrderConfirmation from './OrderConfirmation';
 
 const componentMap = {
   home: Products,
@@ -10,6 +11,7 @@ const componentMap = {
   searchResults: SearchResults,
   cart: Cart,
   checkout: Checkout,
+  orderConfirmation: OrderConfirmation,
 };
 
 export const Screen = ({ screen = 'home' }) => {

@@ -4,7 +4,7 @@ export const CartTotals = ({ cart }) => {
       return (
         <tr key={name}>
           <td>{name}</td>
-          <td>{cost_in_credits}</td>
+          <td className="text-end">{cost_in_credits}</td>
         </tr>
       );
     });

@@ -12,9 +12,11 @@ export const Product = () => {
   //   ? true
   //   : false;
   const productInCart = useMemo(() => {
-    return cart.find((cartItem) => {
-      return cartItem.name === product.name;
-    });
+    return Boolean(
+      cart.find((cartItem) => {
+        return cartItem.name === product.name;
+      }),
+    );
   }, [cart, product.name]);
 
   const navigateHome = () => {

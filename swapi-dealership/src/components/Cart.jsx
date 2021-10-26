@@ -15,6 +15,15 @@ export const Cart = () => {
     });
   };
 
+  if (cart.length <= 0) {
+    dispatch({
+      type: 'setScreen',
+      payload: 'home',
+    });
+
+    return;
+  }
+
   return (
     <section className="row">
       <header className="col-12">
