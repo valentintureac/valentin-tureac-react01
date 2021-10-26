@@ -27,7 +27,7 @@ export const ProductTile = ({ product }) => {
       <section className="mt-2 text-center">
         <button
           className="btn btn-warning"
-          title={'Details for ${name}'}
+          title={`Details for ${name}`}
           type="button"
           onClick={navigateToPdp}
         >
