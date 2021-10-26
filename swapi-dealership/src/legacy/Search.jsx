@@ -1,8 +1,11 @@
 import { Component } from 'react';
+import { AppContext } from './../contexts/AppContext';
 
 const baseUrl = 'https://swapi.dev/api/vehicles';
 
 class Search extends Component {
+  static contextType = AppContext;
+
   state = {
     busy: false,
     searchTerm: '',
@@ -19,13 +22,20 @@ class Search extends Component {
       .then((response) => {
         return response.json();
       })
-      .then(({ results: films }) => {
-        console.log(films);
+      .then(({ results }) => {
         this.setState({
           busy: false,
         });
 
-        this.props.onSearchResults(films);
+        this.context.dispatch({
+          type: 'setSearchResults',
+          payload: results,
+        });
+
+        this.context.dispatch({
+          type: 'setScreen',
+          payload: 'searchResults',
+        });
       });
   };
 
