@@ -6,12 +6,13 @@ const baseUrl = 'https://swapi.dev/api/vehicles';
 export const Products = () => {
   const [products, setProducts] = useState([]);
   const [busy, setBusy] = useState(true);
+  const [urlToFetch, setUrlToFetch] = useState(baseUrl);
 
   // recipe
   const fetchProducts = useCallback(() => {
     setBusy(true);
 
-    return fetch(baseUrl)
+    return fetch(urlToFetch)
       .then((response) => {
         return response.json();
       })
@@ -21,7 +22,7 @@ export const Products = () => {
         setProducts(products);
         setBusy(false);
       });
-  }, []);
+  }, [urlToFetch]);
 
   useEffect(() => {
     fetchProducts();

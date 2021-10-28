@@ -18,7 +18,7 @@ export const Dialog = ({ show = false, onClose = () => {}, children }) => {
 
   const renderDialog = () => {
     if (!show) {
-      return <>dialog is closed</>;
+      return <></>;
     }
 
     return (
