@@ -3,6 +3,7 @@ import { clickClicker, decrementClicker } from './actions/creators/ui';
 import { initializeGoogleAuth } from './api';
 import { Footer, Header } from './components/common';
 
+// async
 initializeGoogleAuth();
 
 export const App = () => {
