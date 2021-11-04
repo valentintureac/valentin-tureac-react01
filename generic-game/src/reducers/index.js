@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import uiReducer from './ui';
+import uiReducer from './uiReducer';
 
 const reducers = combineReducers({
   ui: uiReducer,
