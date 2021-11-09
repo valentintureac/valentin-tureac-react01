@@ -1,4 +1,4 @@
-import { AUTH_LOGIN } from '../actions/types/auth';
+import { AUTH_LOGIN, AUTH_LOGOUT } from '../actions/types/auth';
 
 const initialState = {
   // THE BAD;
@@ -11,7 +11,7 @@ const initialState = {
 // auth.authenticated?
 // auth.established?
 
-export const authReduer = (state = initialState, action) => {
+const authReduer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -21,6 +21,15 @@ export const authReduer = (state = initialState, action) => {
         authenticated: true,
         established: true,
         user: payload,
+      };
+    case AUTH_LOGOUT:
+      return {
+        // ...state,
+        // authenticated: false,
+        // established: true,
+        // user: null,
+        ...initialState,
+        established: true,
       };
     default:
       return state;

@@ -1,42 +1,25 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { clickClicker, decrementClicker } from './actions/creators/ui';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { initializeGoogleAuth } from './api';
 import { Footer, Header } from './components/common';
+import { HomePage, ProfilePage, NotFoundPage, RanksPage } from './pages';
 
 // async
 initializeGoogleAuth();
 
 export const App = () => {
-  const clicker = useSelector((state) => {
-    const { ui } = state;
-
-    return ui.clicker;
-  });
-
-  const dispatch = useDispatch();
-
   return (
-    <>
+    <BrowserRouter>
       <Header></Header>
-      <main>
-        <div>Value is: {clicker}</div>
-        <button
-          onClick={() => {
-            dispatch(clickClicker());
-          }}
-        >
-          Increment
-        </button>
-        <button
-          onClick={() => {
-            dispatch(decrementClicker());
-          }}
-        >
-          Decrement
-        </button>
+      <main className="text-blue-500 flex-grow">
+        <Switch>
+          <Route path="/" exact component={HomePage}></Route>
+          <Route path="/profile" component={ProfilePage}></Route>
+          <Route path="/ranks" component={RanksPage}></Route>
+          <Route component={NotFoundPage}></Route>
+        </Switch>
       </main>
       <Footer></Footer>
-    </>
+    </BrowserRouter>
   );
 };
 
