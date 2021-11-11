@@ -9,7 +9,7 @@ export const Footer = () => {
             <h1>
               <Link to="/">WORD GAME</Link>
             </h1>
-            <p className="text-xs">Crafter by Valentin with ♥</p>
+            <p className="text-xs">Crafted by Valentin with ♥</p>
           </header>
 
           <ul>
@@ -17,7 +17,7 @@ export const Footer = () => {
               <NavLink
                 to="/profile"
                 title="Go to profile"
-                className="font-bold"
+                className=""
                 activeClassName="text-red-500"
               >
                 Profile
@@ -27,7 +27,7 @@ export const Footer = () => {
               <NavLink
                 to="/play"
                 title="Play now"
-                className="font-bold"
+                className=""
                 activeClassName="text-red-500"
               >
                 Play
@@ -38,7 +38,7 @@ export const Footer = () => {
                 to="/ranks"
                 title="See Users"
                 className={(isActive) => {
-                  return isActive ? 'text-red-500 font-bold' : 'font-bold';
+                  return isActive ? 'text-red-500 ' : '';
                 }}
                 // activeClassName="text-red-500"
               >

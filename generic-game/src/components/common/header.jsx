@@ -1,14 +1,56 @@
 import { Link } from 'react-router-dom';
 import { SiLetterboxd } from 'react-icons/si';
+import { useDispatch } from 'react-redux';
+import Button from '../ui/Button';
+import { requestSignOut, requestSignIn } from '../../actions/creators/auth';
+import { FaUserAlt } from 'react-icons/fa';
+import { CgSpinnerTwo } from 'react-icons/cg';
+import { useAuth } from '../../hooks';
 
 export const Header = () => {
+  const dispatch = useDispatch();
+  const { authenticated, established } = useAuth();
+
   const renderUserControls = () => {
-    const authenticated = false;
+    if (!established) {
+      return <CgSpinnerTwo className="animate-spin"></CgSpinnerTwo>;
+    }
 
     if (authenticated) {
-      return 'user is logged in';
+      return (
+        <>
+          <Link to="/profile" title="Profile">
+            <Button element="span" className="inline-flex h-full items-center">
+              <FaUserAlt></FaUserAlt>
+            </Button>
+          </Link>
+
+          <Button
+            skin="primaryInverted"
+            type="button"
+            title="Log Out"
+            className="ml-2"
+            onClick={() => {
+              dispatch(requestSignOut());
+            }}
+          >
+            Log Out
+          </Button>
+        </>
+      );
     } else {
-      return 'user is not logged in';
+      return (
+        <Button
+          type="button"
+          title="Log in"
+          onClick={() => {
+            dispatch(requestSignIn());
+          }}
+          className="drilldown demo"
+        >
+          Log in
+        </Button>
+      );
     }
   };
 
@@ -24,7 +66,7 @@ export const Header = () => {
           </h1>
         </header>
 
-        {renderUserControls()}
+        <div className="flex items-stretch">{renderUserControls()}</div>
       </div>
     </header>
   );
