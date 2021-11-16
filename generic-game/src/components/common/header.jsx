@@ -19,7 +19,7 @@ export const Header = () => {
     if (authenticated) {
       return (
         <>
-          <Link to="/profile" title="Profile">
+          <Link to="/profile" title="Hello ${username}, go to Profile">
             <Button element="span" className="inline-flex h-full items-center">
               <FaUserAlt></FaUserAlt>
             </Button>

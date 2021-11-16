@@ -16,7 +16,7 @@ export const Footer = () => {
             <li>
               <NavLink
                 to="/profile"
-                title="Go to profile"
+                title="Hello ${username}, go to profile"
                 className=""
                 activeClassName="text-red-500"
               >
