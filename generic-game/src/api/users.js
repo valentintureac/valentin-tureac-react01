@@ -6,7 +6,7 @@ const emptyStats = {
   gamesPlayed: 0,
 };
 
-const userApi = axios.create({
+const usersApi = axios.create({
   baseURL: process.env.REACT_APP_API_BASE,
 });
 
@@ -19,20 +19,44 @@ export const createUser = async (userId) => {
     stats: emptyStats,
   };
 
-  return await userApi.post('/users', payload);
+  return await usersApi.post('/users', payload);
 };
 
 // readUser
 export const readUser = async (userId) => {
   const endpoint = `/users/${userId}`;
 
-  const { data } = await userApi.get(endpoint);
+  const { data } = await usersApi.get(endpoint);
 
-  if (data) {
-    return data;
+  if (data.stats) {
+    return data.stats;
   }
 
   return undefined;
 };
 
-export default userApi;
+// createProfile
+// POST /profiles/231123
+export const createProfile = async (userId, colors) => {
+  const payload = {
+    id: userId,
+    creature: colors,
+  };
+
+  return await usersApi.post('/profiles', payload);
+};
+
+// readProfile
+export const readProfile = async (userId) => {
+  const { data } = await usersApi.get(`/profiles/${userId}`);
+
+  if (data.creature) {
+    return data.creature;
+  }
+
+  return undefined;
+};
+
+// updateProfile
+
+export default usersApi;

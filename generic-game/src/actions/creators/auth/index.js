@@ -1,6 +1,11 @@
 import { initializeGoogleAuth } from '../../../api';
 import { AUTH_LOGIN, AUTH_LOGOUT } from '../../types/auth';
-import { getUserStats, postUserStats } from '../profile';
+import {
+  getUserProfile,
+  getUserStats,
+  postUserProfile,
+  postUserStats,
+} from '../profile';
 
 export const login = (user) => {
   // switch to thunk
@@ -18,8 +23,24 @@ export const login = (user) => {
     // if not, create
     try {
       await dispatch(getUserStats(id));
-    } catch (error) {
-      await dispatch(postUserStats(id));
+    } catch (response) {
+      const { status: httpsStatus } = response;
+
+      if (httpsStatus === 404) {
+        await dispatch(postUserStats(id));
+      }
+
+      // do more error handling
+    }
+
+    // read profile
+    // determine if user has profile
+    // if not, create
+    try {
+      // dispatch getUserProfile
+      await dispatch(getUserProfile(id));
+    } catch (response) {
+      await dispatch(postUserProfile(id));
     }
 
     dispatch(setLogIn(user));
