@@ -16,7 +16,7 @@ export const ProfilePage = () => {
   return (
     <div className="container mx-auto p-4">
       <header>
-        <h1>Profile</h1>
+        <h1>Profilee</h1>
       </header>
 
       <section className="flex justify-between flex-wrap mt-8">
