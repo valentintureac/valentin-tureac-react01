@@ -10,8 +10,8 @@ export const ProfileForm = () => {
     return creature;
   });
 
-  const onSubmit = ({ preventDefault }) => {
-    preventDefault();
+  const onSubmit = (event) => {
+    event.preventDefault();
   };
 
   return (
