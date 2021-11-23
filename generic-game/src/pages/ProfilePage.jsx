@@ -25,9 +25,13 @@ export const ProfilePage = () => {
         </div>
       </section>
 
-      <section className="mt-4 md:w-1/4 md:mt-12 mx-auto">
-        <ProfileForm></ProfileForm>
-      </section>
+      {established ? (
+        <section className="mt-4 md:w-1/4 md:mt-12 mx-auto">
+          <ProfileForm></ProfileForm>
+        </section>
+      ) : (
+        '...logging you in'
+      )}
     </div>
   );
 };
