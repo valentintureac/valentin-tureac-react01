@@ -1,14 +1,17 @@
-import { useAuth } from '../hooks';
+import { UserStats } from '../components/profile';
+import { useAuth, useStats } from '../hooks';
 
 export const HomePage = () => {
   const { authenticated, established } = useAuth();
+  const stats = useStats();
 
   return (
     <div className="p-4 container mx-auto">
+      <h1>Welcomed to Generic Game</h1>
       {!established ? (
         '...add spinner here'
       ) : authenticated ? (
-        'user logged in'
+        <UserStats className="mt-8" entryClassName="p-3" {...stats}></UserStats>
       ) : (
         <div className="text-center">
           <button

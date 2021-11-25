@@ -25,7 +25,7 @@
   width: 35px;
   height: 35px;
 
-  border-radius: 50%;
+  @apply rounded-full;
 
   overflow: hidden;
 
@@ -97,6 +97,7 @@
   border-radius: 20px;
 
   background-color: #ffabce;
+  border: 1px solid #000;
 }
 
 .Creature-noseNostril {
