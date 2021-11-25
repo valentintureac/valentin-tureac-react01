@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { ProfileForm } from '../components/profile';
+import { ProfileForm, Creature } from '../components/profile';
 import { useAuth } from '../hooks';
 
 export const ProfilePage = () => {
@@ -22,6 +22,10 @@ export const ProfilePage = () => {
       <section className="flex justify-between flex-wrap mt-8">
         <div className="w-full md:w-2/3">
           {/* create UserProfile component, populate it with info from the store */}
+        </div>
+
+        <div className="w-full flex justify-center mt-8 md:w-1/3 md:mt-0">
+          <Creature></Creature>
         </div>
       </section>
 
