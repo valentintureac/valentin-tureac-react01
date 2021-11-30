@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { BiDialpadAlt } from 'react-icons/bi';
 
 const emptyStats = {
   gamesWon: 0,
@@ -65,6 +66,38 @@ export const updateProfile = async (userId, color) => {
   };
 
   return await usersApi.patch(`/profiles/${userId}`, payload);
+};
+
+export const updateGameLost = async (userId, userStats) => {
+  const payload = {
+    ...userStats,
+    gamesLost: userStats.gamesLost + 1,
+    gamesPlayed: userStats.gamesPlayed + 1,
+  };
+
+  const { data } = await usersApi.patch(`/users/${userId}`, payload);
+
+  if (data.stats) {
+    return data.stats;
+  }
+
+  return undefined;
+};
+
+export const updateGameWon = async (userId, userStats) => {
+  const payload = {
+    ...userStats,
+    gamesLost: userStats.gamesLost - 1,
+    gamesWon: userStats.gamesWon + 1,
+  };
+
+  const { data } = await usersApi.patch(`/users/${userId}`, payload);
+
+  if (data.stats) {
+    return data.stats;
+  }
+
+  return undefined;
 };
 
 export default usersApi;
