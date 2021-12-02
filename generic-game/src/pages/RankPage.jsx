@@ -7,7 +7,7 @@ export const RankPage = ({ match }) => {
   const dispatch = useDispatch();
   const userId = match.params.id;
 
-  const { established, user } = useSelector(({ users }) => {
+  const { user } = useSelector(({ users }) => {
     return {
       established: users.established,
       user: users.entities[userId],
