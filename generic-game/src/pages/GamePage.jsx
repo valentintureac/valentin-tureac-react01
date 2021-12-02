@@ -1,4 +1,5 @@
 // import { useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { patchGameLost } from '../actions/creators/profile';
 import { Authorize } from '../components/auth/Authorize';
@@ -7,15 +8,18 @@ import { Button } from '../components/ui';
 import { gameEnded, gameStarted } from './../actions/creators/game';
 
 export const GamePage = () => {
-  // const [gameState, setGameState] = useState({
-  //   playing: false,
-  // });
-  // const { playing } = gameState;
-
   const dispatch = useDispatch();
   const { playing } = useSelector(({ game }) => {
     return game;
   });
+
+  useEffect(() => {
+    return () => {
+      if (playing) {
+        dispatch(gameEnded());
+      }
+    };
+  }, [dispatch, playing]);
 
   return (
     <div className="p-4 container flex mx-auto">

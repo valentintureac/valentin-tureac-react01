@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { BiDialpadAlt } from 'react-icons/bi';
 
 const emptyStats = {
   gamesWon: 0,
@@ -13,7 +12,7 @@ const usersApi = axios.create({
 
 // CRUD -> Create Read Update Delete
 
-// createuser
+// createUser
 export const createUser = async (userId) => {
   const payload = {
     id: userId,
@@ -37,14 +36,14 @@ export const readUser = async (userId) => {
 };
 
 // createProfile
-// POST /profiles/231123
+// POST /profiles/2312313
 export const createProfile = async (userId, colors) => {
   const payload = {
     id: userId,
     creature: colors,
   };
 
-  return await usersApi.post('/profiles', payload);
+  return await usersApi.post(`/profiles`, payload);
 };
 
 // readProfile
@@ -54,15 +53,15 @@ export const readProfile = async (userId) => {
   if (data.creature) {
     return data.creature;
   }
+  // return data?.creature;
 
   return undefined;
 };
 
 // updateProfile
-export const updateProfile = async (userId, color) => {
+export const updateProfile = async (userId, colors) => {
   const payload = {
-    id: userId,
-    creature: color,
+    creature: colors,
   };
 
   return await usersApi.patch(`/profiles/${userId}`, payload);
@@ -70,9 +69,11 @@ export const updateProfile = async (userId, color) => {
 
 export const updateGameLost = async (userId, userStats) => {
   const payload = {
-    ...userStats,
-    gamesLost: userStats.gamesLost + 1,
-    gamesPlayed: userStats.gamesPlayed + 1,
+    stats: {
+      ...userStats,
+      gamesLost: ++userStats.gamesLost,
+      gamesPlayed: ++userStats.gamesPlayed,
+    },
   };
 
   const { data } = await usersApi.patch(`/users/${userId}`, payload);
@@ -86,9 +87,11 @@ export const updateGameLost = async (userId, userStats) => {
 
 export const updateGameWon = async (userId, userStats) => {
   const payload = {
-    ...userStats,
-    gamesLost: userStats.gamesLost - 1,
-    gamesWon: userStats.gamesWon + 1,
+    stats: {
+      ...userStats,
+      gamesLost: --userStats.gamesLost,
+      gamesWon: ++userStats.gamesWon,
+    },
   };
 
   const { data } = await usersApi.patch(`/users/${userId}`, payload);
@@ -98,6 +101,16 @@ export const updateGameWon = async (userId, userStats) => {
   }
 
   return undefined;
+};
+
+export const readUsers = async () => {
+  try {
+    const { data } = await usersApi.get(`/users`);
+
+    return data;
+  } catch (response) {
+    return response;
+  }
 };
 
 export default usersApi;

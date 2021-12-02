@@ -1,5 +1,6 @@
 import { initializeGoogleAuth } from '../../../api';
-import { AUTH_LOGIN, AUTH_LOGOUT } from '../../types/auth';
+import { readUser, readUsers } from '../../../api/users';
+import { AUTH_LOGIN, AUTH_LOGOUT, SET_USER, SET_USERS } from '../../types/auth';
 import {
   getUserProfile,
   getUserStats,
@@ -73,5 +74,64 @@ export const requestSignOut = () => {
     return initializeGoogleAuth().then((GoogleAuth) => {
       GoogleAuth.signOut();
     });
+  };
+};
+
+export const getUsers = (force = false) => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    const cached = state.users.cached;
+
+    if (cached === true && force === false) {
+      return;
+    }
+
+    try {
+      const users = await readUsers();
+
+      dispatch(setUsers(users));
+    } catch (response) {
+      console.log(response);
+    }
+  };
+};
+
+// should be in a users slice
+export const getUser = (userId, force = false) => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    const user = state.users.entitites[userId];
+
+    if (user !== undefined && force === false) {
+      return;
+    }
+
+    try {
+      const stats = await readUser(userId);
+
+      dispatch(
+        setUser({
+          id: userId,
+          stats,
+        }),
+      );
+    } catch (response) {
+      console.log(response);
+    }
+  };
+};
+
+// should be in a users slice
+export const setUsers = (users) => {
+  return {
+    type: SET_USERS,
+    payload: users,
+  };
+};
+
+export const setUser = (user) => {
+  return {
+    type: SET_USER,
+    payload: user,
   };
 };
