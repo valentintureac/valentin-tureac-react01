@@ -1,0 +1,7 @@
+#__next {
+  @apply h-screen;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
