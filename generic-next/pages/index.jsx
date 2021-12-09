@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { useDispatch, useSelector } from 'react-redux';
-import { Films } from '../components/Films';
 import { decrement, increment } from '../store/ui/uiSlice';
 
 export default function Home({ hello, films }) {
@@ -8,6 +7,9 @@ export default function Home({ hello, films }) {
     return ui.count;
   });
 
+  const { authenticated } = useSelector(({ auth }) => {
+    return auth;
+  });
   const dispatch = useDispatch();
 
   return (
@@ -20,25 +22,30 @@ export default function Home({ hello, films }) {
         <header className="container mx-auto py-4">
           Menu
           {hello}
+          <div className="mt-4">
+            User is {authenticated ? 'logged in' : 'logged out'}
+          </div>
         </header>
 
         <main className="container mx-auto py-4 flex-grow">
           insert forms
-          <button
-            onClick={() => {
-              dispatch(decrement());
-            }}
-          >
-            Decrement
-          </button>
-          <div>{count}</div>
-          <button
-            onClick={() => {
-              dispatch(increment());
-            }}
-          >
-            Increment
-          </button>
+          <div className="mt-16">
+            <button
+              onClick={() => {
+                dispatch(decrement());
+              }}
+            >
+              Decrement
+            </button>
+            <div>{count}</div>
+            <button
+              onClick={() => {
+                dispatch(increment());
+              }}
+            >
+              Increment
+            </button>
+          </div>
         </main>
 
         <footer className="container mx-auto py-4">Footer</footer>
@@ -55,6 +62,11 @@ export const getServerSideProps = async () => {
     props: {
       hello: 'world',
       films: [],
+      initialReduxState: {
+        ui: {
+          count: 42,
+        },
+      },
     },
   };
 };

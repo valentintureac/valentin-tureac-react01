@@ -3,7 +3,7 @@
 import { isBrowser } from './../shared';
 import { compose, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer, { ui } from './reducer';
+import rootReducer, { ui, auth } from './reducer';
 import { useMemo } from 'react';
 
 let store;
@@ -11,6 +11,7 @@ let composeEnhancer;
 
 const initialState = {
   ui,
+  auth,
 };
 
 if (isBrowser() && process.env.NEXT_PUBLIC_ENV === 'dev') {
@@ -20,7 +21,7 @@ if (isBrowser() && process.env.NEXT_PUBLIC_ENV === 'dev') {
 }
 
 const initStore = (preloadedState = initialState) => {
-  return createStore(rootReducer, preloadedState);
+  return createStore(rootReducer, preloadedState, composeEnhancer());
 };
 
 export const initializeStore = (preloadedState) => {

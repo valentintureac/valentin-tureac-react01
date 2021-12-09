@@ -3,7 +3,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import '../styles/index.css';
 
 function MyApp({ Component, pageProps }) {
-  const store = useStore(pageProps.initalReduxState);
+  const store = useStore(pageProps.initialReduxState);
 
   return (
     <ReduxProvider store={store}>
@@ -13,18 +13,3 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
-
-export const getServerSideProps = async () => {
-  let pageProps = {};
-
-  // feed redux state on the backend
-  pageProps.initalReduxState = {
-    ui: {
-      count: 36,
-    },
-  };
-
-  return {
-    pageProps,
-  };
-};
