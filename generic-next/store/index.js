@@ -1,10 +1,11 @@
 // https://github.com/vercel/next.js/tree/canary/examples/with-redux
 // https://github.com/vercel/next.js/tree/canary/examples/with-redux-toolkit
 import { isBrowser } from './../shared';
-import { compose, createStore } from 'redux';
+import { applyMiddleware, compose, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer, { ui, auth } from './reducer';
 import { useMemo } from 'react';
+import thunk from 'redux-thunk';
 
 let store;
 let composeEnhancer;
@@ -21,7 +22,11 @@ if (isBrowser() && process.env.NEXT_PUBLIC_ENV === 'dev') {
 }
 
 const initStore = (preloadedState = initialState) => {
-  return createStore(rootReducer, preloadedState, composeEnhancer());
+  return createStore(
+    rootReducer,
+    preloadedState,
+    composeEnhancer(applyMiddleware(thunk)),
+  );
 };
 
 export const initializeStore = (preloadedState) => {
